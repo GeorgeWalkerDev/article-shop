@@ -10,6 +10,7 @@ import { useState, useEffect} from 'react'
 
 function App() {
   const [sidebar, setSidebar] = useState(false)
+  const [cart, setCart] = useState([{productID: 1, quantity: 3},{productID: 2, quantity: 1}])
 
   useEffect(() => {
     const toggleSidebar = () => {
@@ -21,6 +22,16 @@ function App() {
     return () => basket.removeEventListener('click', toggleSidebar)
   }, [sidebar])
 
+  const addToCart = (id, qty) => {
+    const newItem = {productID: id, quantity: qty}
+    setCart([...cart, newItem])
+  }
+
+  const deleteFromCart = (id) => {
+    const filtered = cart.filter(item => item.productID !== id)
+    setCart(filtered)
+  }
+
   return (
     <Router>
       <Container fluid className="main">
@@ -30,13 +41,13 @@ function App() {
             <Routes>
               <Route path='/' element={<Home />}/>
               <Route path='/shop' element={<Shop />}/>
-              <Route path='/shop/:id' element={<ProductPage />}/>
-              <Route path='/cart' element={<ShoppingCart />}/>
+              <Route path='/shop/:id' element={<ProductPage addToCart={addToCart}/>}/>
+              <Route path='/cart' element={<ShoppingCart cart={cart} deleteFromCart={deleteFromCart}/>}/>
             </Routes>
           </Col>
           {sidebar ?
           <Col className="sidebar">
-            <SidebarBasket/>
+            <SidebarBasket cart={cart} deleteFromCart={deleteFromCart}/>
           </Col> :
           null}
 
