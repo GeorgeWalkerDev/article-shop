@@ -3,10 +3,11 @@ import { Container, Image, Row, Col, Spinner, Button, Form  } from 'react-bootst
 import { useParams } from 'react-router-dom'
 import {useState} from 'react'
 
-const ProductPage = () => {
+const ProductPage = ({ addToCart }) => {
     const { id } = useParams()
     const [product, setProduct] = useState(null)
 
+    //Fetch product data based on ID passed from previous page click
     useEffect(() => {
         fetch(`https://fakestoreapi.com/products/${id}`)
             .then(res => res.json())
@@ -14,6 +15,15 @@ const ProductPage = () => {
                 setProduct(data)
             })
     }, [id])
+
+    useEffect(() => {
+
+    })
+    const onSubmit = (e) => {
+        e.preventDefault()
+        const quantityValue = document.querySelector('#quantityInput').value;
+        addToCart(+id, +quantityValue)
+    }
     
     if (!product) {
         return (
@@ -23,7 +33,7 @@ const ProductPage = () => {
         )
     } else {
         return (
-            <Container>
+            <Container className="my-4 px-4">
                 <Row>
                     <Col>
                         <Image fluid src={product.image}/>
@@ -33,8 +43,8 @@ const ProductPage = () => {
                         <h3>£{product.price}</h3>
                         <p>Rated: {product.rating.rate} ({product.rating.count})</p>
                         <p>{product.description}</p>
-                        <Form>
-                            <Form.Select>
+                        <Form id="productForm" onSubmit={e => onSubmit(e)}>
+                            <Form.Select id="quantityInput">
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>

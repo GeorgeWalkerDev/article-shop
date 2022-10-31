@@ -23,8 +23,12 @@ function App() {
   }, [sidebar])
 
   const addToCart = (id, qty) => {
-    const newItem = {productID: id, quantity: qty}
-    setCart([...cart, newItem])
+    if (cart.some(item => item.productID === id)){
+      setCart(cart.map(item => item.productID === id ? {productID: id, quantity: (item.quantity + qty)} : item))
+    } else {
+      const newItem = {productID: id, quantity: qty}
+      setCart([...cart, newItem])
+    }
   }
 
   const deleteFromCart = (id) => {
