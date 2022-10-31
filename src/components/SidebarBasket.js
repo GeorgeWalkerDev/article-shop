@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import {useState} from 'react'
-import { Container, Row, Col, Spinner, ListGroup } from 'react-bootstrap'
+import { Container, Row, Col, Spinner, ListGroup, Form, Button } from 'react-bootstrap'
+import { FaTrashAlt } from 'react-icons/fa'
 
 const SidebarBasket = ({cart, deleteFromCart}) => {
   const [cartItems, setCartItems] = useState([])
@@ -21,8 +22,6 @@ const SidebarBasket = ({cart, deleteFromCart}) => {
 
   //Sum subtotal price of items in cart
   const subtotal = cartItems.reduce((prev,acc,i) => prev += (acc.price * cart[i].quantity), 0).toFixed(2);
-  console.log(cartItems)
-
 
   //Render cart: conditional to ensure API has fetched data prior to render.
   if (cart.length === 0) {
@@ -41,6 +40,7 @@ const SidebarBasket = ({cart, deleteFromCart}) => {
       <h3 className="my-3">Basket</h3>
         <ListGroup>
         {cartItems.map((item, i) => {
+          const quantity = cart[i].quantity;
           return (
             <ListGroup.Item className="py-4" key={item.id}>
               <Row>
@@ -48,7 +48,23 @@ const SidebarBasket = ({cart, deleteFromCart}) => {
                   <Col xs={8}>
                       <h6>{item.title}</h6>
                       <p>Price: £{item.price.toFixed(2)}</p>
-                      <p>Qty: {cart[i].quantity}</p>
+                      <Form id="updateQtyForm">
+                          <Form.Group>
+                            <Form.Label className="mb-3">Qty:</Form.Label>
+                            <Form.Select defaultValue={quantity} id="quantityUpdate" className="ms-3" style={{width: '60px'}}>
+                                <option id="1" value='1'>1</option>
+                                <option id="2" value='2'>2</option>
+                                <option id="3" value='3'>3</option>
+                                <option id="4" value='4'>4</option>
+                                <option id="5" value='5'>5</option>
+                                <option id="6" value='6'>6</option>
+                                <option id="7" value='7'>7</option>
+                                <option id="8" value='8'>8</option>
+                            </Form.Select>
+                            <Button className="me-3" variant="primary" type="submit">Update</Button>
+                            <FaTrashAlt style={{cursor: 'pointer'}}/>
+                          </Form.Group>
+                      </Form>
                   </Col>
               </Row>
             </ListGroup.Item>

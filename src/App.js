@@ -2,9 +2,10 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Home from './pages/Home'
 import Shop from './pages/Shop'
 import ShoppingCart from './pages/ShoppingCart'
+import ProductPage from './pages/ProductPage'
+import Category from './pages/Category'
 import Navigation from './components/Navigation'
 import SidebarBasket from './components/SidebarBasket'
-import ProductPage from './pages/ProductPage'
 import {Container, Row, Col} from 'react-bootstrap'
 import { useState, useEffect} from 'react'
 
@@ -47,6 +48,7 @@ function App() {
               <Route path='/shop' element={<Shop />}/>
               <Route path='/shop/:id' element={<ProductPage addToCart={addToCart}/>}/>
               <Route path='/cart' element={<ShoppingCart cart={cart} deleteFromCart={deleteFromCart}/>}/>
+              <Route path='/category/:category' element={<Category />}/>
             </Routes>
           </Col>
           {sidebar ?

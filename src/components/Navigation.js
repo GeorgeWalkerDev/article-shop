@@ -22,11 +22,18 @@ const Navigation = () => {
               <Nav.Link>Shop</Nav.Link>
             </LinkContainer>
             <NavDropdown title="By Category" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Mens</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Womens
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Other</NavDropdown.Item>
+              <LinkContainer to="/category/men's%20clothing">
+                <NavDropdown.Item>Mens</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to="/category/women's%20clothing">
+                <NavDropdown.Item>Womens</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to="/category/electronics">
+                <NavDropdown.Item>Electronics</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to="/category/jewelery">
+                <NavDropdown.Item>Jewellery</NavDropdown.Item>
+              </LinkContainer>
             </NavDropdown>
           </Nav>
           <Nav.Link id="sidebarBasket"><FaShoppingBasket /></Nav.Link>

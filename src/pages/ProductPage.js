@@ -16,15 +16,14 @@ const ProductPage = ({ addToCart }) => {
             })
     }, [id])
 
-    useEffect(() => {
-
-    })
+    //Submit event handler for adding item to cart
     const onSubmit = (e) => {
         e.preventDefault()
         const quantityValue = document.querySelector('#quantityInput').value;
         addToCart(+id, +quantityValue)
     }
     
+    //Conditional logic to ensure item data has been fetched from API
     if (!product) {
         return (
             <Spinner animation="border" role="status">
@@ -45,14 +44,14 @@ const ProductPage = ({ addToCart }) => {
                         <p>{product.description}</p>
                         <Form id="productForm" onSubmit={e => onSubmit(e)}>
                             <Form.Select id="quantityInput">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
+                                <option value='1'>1</option>
+                                <option value='2'>2</option>
+                                <option value='3'>3</option>
+                                <option value='4'>4</option>
+                                <option value='5'>5</option>
+                                <option value='6'>6</option>
+                                <option value='7'>7</option>
+                                <option value='8'>8</option>
                             </Form.Select>
                             <Button variant="primary" type="submit">Add to Basket</Button>
                         </Form>
