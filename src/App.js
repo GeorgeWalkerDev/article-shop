@@ -1,7 +1,6 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Home from './pages/Home'
 import Shop from './pages/Shop'
-import ShoppingCart from './pages/ShoppingCart'
 import ProductPage from './pages/ProductPage'
 import Category from './pages/Category'
 import Navigation from './components/Navigation'
@@ -32,6 +31,13 @@ function App() {
     }
   }
 
+  const updateCart = (id, newQty) => {
+    const updatedItem = {productID: id, quantity: newQty}
+    const filteredCart = cart.filter(item => item.productID !== id);
+    const updatedCart = [...filteredCart, updatedItem].sort((a,b) => a.productID - b.productID)
+    setCart(updatedCart)
+  }
+
   const deleteFromCart = (id) => {
     const filtered = cart.filter(item => item.productID !== id)
     setCart(filtered)
@@ -47,13 +53,12 @@ function App() {
               <Route path='/' element={<Home />}/>
               <Route path='/shop' element={<Shop />}/>
               <Route path='/shop/:id' element={<ProductPage addToCart={addToCart}/>}/>
-              <Route path='/cart' element={<ShoppingCart cart={cart} deleteFromCart={deleteFromCart}/>}/>
               <Route path='/category/:category' element={<Category />}/>
             </Routes>
           </Col>
           {sidebar ?
           <Col className="sidebar">
-            <SidebarBasket cart={cart} deleteFromCart={deleteFromCart}/>
+            <SidebarBasket cart={cart} deleteFromCart={deleteFromCart} updateCart={updateCart}/>
           </Col> :
           null}
 
