@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/article-shop/static/css/main.8a3a0e8a.css",
+    "main.js": "/article-shop/static/js/main.d7e0ae87.js",
+    "static/js/787.66437d8f.chunk.js": "/article-shop/static/js/787.66437d8f.chunk.js",
+    "static/media/clothing-items.jpg": "/article-shop/static/media/clothing-items.a7190846948c171e909a.jpg",
+    "static/media/clothing-items-2.jpg": "/article-shop/static/media/clothing-items-2.c22256a3a8d0f008a5d9.jpg",
+    "static/media/logo-no-background.png": "/article-shop/static/media/logo-no-background.09dfebdb11cfd0a20568.png",
+    "index.html": "/article-shop/index.html",
+    "main.8a3a0e8a.css.map": "/article-shop/static/css/main.8a3a0e8a.css.map",
+    "main.d7e0ae87.js.map": "/article-shop/static/js/main.d7e0ae87.js.map",
+    "787.66437d8f.chunk.js.map": "/article-shop/static/js/787.66437d8f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8a3a0e8a.css",
+    "static/js/main.d7e0ae87.js"
+  ]
+}
