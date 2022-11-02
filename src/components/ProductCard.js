@@ -4,13 +4,15 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 function ProductCard({ product }) {
   return (
-    <Card className="m-3" style={{ width: '18rem' }}>
+    <Card className="productCard m-3">
       <Card.Img variant="top" src={product.image} />
       <Card.Body>
         <Card.Title>{product.title}</Card.Title>
-        <Card.Text>
-          {product.description}
-        </Card.Text>
+        <div className="cardText">
+          <Card.Text>
+            {product.description}
+          </Card.Text>
+        </div>
       </Card.Body>
       <ListGroup className="list-group-flush">
         <ListGroup.Item>£{product.price.toFixed(2)}</ListGroup.Item>

@@ -24,9 +24,15 @@ const Shop = () => {
         )
     } else {
         return (
-            <Container className="d-flex flex-wrap justify-content-center">
-                {products.map(product => <ProductCard key={product.id} product={product}/>)}
-            </Container>
+                <>
+                <Container className="mt-4">
+                    <h2 className="ms-3">All Products</h2>
+                </Container>
+                <Container className="d-flex flex-wrap justify-content-between cards">
+                    {products.map(product => <ProductCard key={product.id} product={product}/>)}
+                </Container>
+                </>
+
         )
     }
 

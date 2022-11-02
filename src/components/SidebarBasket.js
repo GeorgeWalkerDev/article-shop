@@ -23,12 +23,9 @@ const SidebarBasket = ({cart, deleteFromCart, updateCart}) => {
           setCartItems(values)
           setSubtotal(values.reduce((prev,acc,i) => prev += (acc.price * cart[i].quantity), 0).toFixed(2))
         })
+        setQuantity(cart.map(item => item.quantity))
     }
 
-  },[cart])
-
-  useEffect(() => {
-    setQuantity(cart.map(item => item.quantity))
   },[cart])
 
   //Update quantity event handler

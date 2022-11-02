@@ -9,8 +9,8 @@ const Navigation = () => {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <LinkContainer to="/">
-          <Navbar.Brand>Article.</Navbar.Brand>
+        <LinkContainer style={{width: '20%'}} to="/">
+          <Navbar.Brand><img className="logo" src={require("../images/article-logo/png/logo-no-background.png")} alt='article logo'/></Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
